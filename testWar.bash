@@ -4,9 +4,13 @@ rm warOutput.txt
 rm warTrends.csv
 
 ./setup.py
-for i in {1..2000}
+for i in {1..200}
 do
-	./war.py >> warOutput.txt
+	echo "" > warOutput.txt
+	for j in {1..10}
+	do
+		./war.py >> warOutput.txt
+	done
 	./checkWar.py
 done
 
