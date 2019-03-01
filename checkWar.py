@@ -7,8 +7,6 @@ oFilename = "warTrends.csv"
 iFile = open(iFilename, 'rt')
 lines = iFile.readlines()
 
-#outFile needs to be opened twice, as r and as a
-
 oneWins = 0
 twoWins = 0
 
@@ -17,14 +15,17 @@ with open(oFilename, 'rt') as previous:
 
 	oneWins = int(lastResult[0])
 	twoWins = int(lastResult[1])
+	#these come from warTrends.csv
 
 	for line in lines:
+	#these come from warOutput
 		if "One" in line:
 			twoWins += 1
 		elif "Two" in line:
 			oneWins += 1
 		elif "oops" in line:
 			raise ValueError("Failed match")
+			#oops is the output from war if neither deck has 52 cards
 		else:
 			continue
 	previous.close()
